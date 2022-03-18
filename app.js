@@ -8,11 +8,9 @@ const USERNAME_KEY = "username";
 function onLoginSubmit(event){
     event.preventDefault();
     loginForm.classList.add(HIDDEN_CLASSNAME);
+    localStorage.setItem(USERNAME_KEY, loginInput.value);
 
-    const username = loginInput.value;
-    localStorage.setItem(USERNAME_KEY, username);
-
-    painGreeings(username);
+    painGreeings();
 }
 
 function handleLinkClick(event){
@@ -22,7 +20,8 @@ function handleLinkClick(event){
 
 loginForm.addEventListener("submit", onLoginSubmit);
 
-function painGreeings(username){
+function painGreeings(){
+    const username = localStorage.getItem(USERNAME_KEY);
     greeting.innerHTML = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
 
@@ -36,5 +35,5 @@ if(savedUsername === null){
     loginForm.addEventListener("submit", onLoginSubmit);
 }else{
     // show the greetings
-    painGreeings(savedUsername);
+    painGreeings();
 }
