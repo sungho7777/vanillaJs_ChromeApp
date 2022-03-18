@@ -9,7 +9,8 @@ function onLoginSubmit(event){
     loginForm.classList.add(HIDDEN_CLASSNAME);
 
     const username=loginInput.value;
-
+    localStorage.setItem("username", username);
+    
     greeting.innerHTML=`Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
